@@ -36,7 +36,7 @@ const Login: FunctionComponent = () => {
 
   return (
     <div class="login-container">
-      <h2>Welcome to PopApp</h2>
+      <h2>Welcome to popapp.com</h2>
       <p>Please sign in to continue to your account</p>
       {error && <div class="error-message">{error}</div>}
       {currentUser ? (

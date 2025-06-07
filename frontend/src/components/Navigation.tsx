@@ -9,7 +9,7 @@ const Navigation: FunctionalComponent = () => {
     <nav>
       <div class="nav-container">
         <div class="nav-logo">
-          <Link href="/">PopApp</Link>
+          <Link href="/">popapp.com</Link>
         </div>
         <div class="nav-links">
           <Link activeClassName="active" href="/">Home</Link>

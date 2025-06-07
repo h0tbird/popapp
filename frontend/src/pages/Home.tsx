@@ -3,7 +3,7 @@ import { FunctionalComponent } from 'preact';
 const Home: FunctionalComponent = () => {
   return (
     <div class="page home-page">
-      <h1>Welcome to PopApp</h1>
+      <h1>Welcome to popapp.com</h1>
       <p>Coding apps with a "vibe".</p>
       <div class="home-features">
         <h2>Features</h2>
