@@ -68,3 +68,193 @@ main {
 		background-color: #1a1a1a;
 	}
 }
+
+/* Navigation Styles */
+nav {
+	width: 100%;
+	background-color: #673ab8;
+	padding: 0 1rem;
+}
+
+.nav-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+.nav-logo a {
+	color: white;
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.nav-links {
+	display: flex;
+}
+
+.nav-links a {
+	color: white;
+	padding: 1rem;
+	text-decoration: none;
+}
+
+.nav-links a.active {
+	background-color: #0005;
+}
+
+.nav-links a:hover {
+	background-color: #0008;
+}
+
+/* Authentication Styles */
+.login-container, .profile-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+	padding: 2rem;
+	border-radius: 8px;
+	background-color: #f5f5f5;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+	color: #d32f2f;
+	margin-bottom: 1rem;
+	padding: 0.5rem;
+	background-color: #ffebee;
+	border-radius: 4px;
+	width: 100%;
+	text-align: center;
+}
+
+.google-signin-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	padding: 0.75rem 1rem;
+	background-color: white;
+	color: #757575;
+	border: 1px solid #dadce0;
+	border-radius: 4px;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.google-signin-button:hover {
+	background-color: #f5f5f5;
+}
+
+.google-icon {
+	margin-right: 10px;
+	font-size: 1.2rem;
+	color: #4285F4;
+}
+
+.sign-out-button {
+	margin-top: 1rem;
+	padding: 0.75rem 1rem;
+	background-color: #673ab8;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.sign-out-button:hover {
+	background-color: #5b33a0;
+}
+
+/* Profile Styles */
+.profile-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.profile-avatar {
+	margin-bottom: 1rem;
+}
+
+.profile-avatar img {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.avatar-placeholder {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background-color: #673ab8;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 2.5rem;
+}
+
+.profile-details {
+	width: 100%;
+	text-align: left;
+}
+
+/* Dashboard Styles */
+.dashboard-page {
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 2rem;
+}
+
+.dashboard-content {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 1rem;
+	margin-top: 2rem;
+}
+
+.dashboard-card {
+	background-color: #f5f5f5;
+	border-radius: 8px;
+	padding: 1.5rem;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-action {
+	display: block;
+	width: 100%;
+	padding: 0.75rem;
+	margin-bottom: 0.5rem;
+	background-color: #673ab8;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.dashboard-action:hover {
+	background-color: #5b33a0;
+}
+
+/* Page Styles */
+.page {
+	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 2rem;
+}
