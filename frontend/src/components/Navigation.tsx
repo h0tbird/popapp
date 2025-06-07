@@ -1,25 +1,31 @@
 import { FunctionalComponent } from 'preact';
-import { Link } from 'preact-router/match';
+import { useLocation } from 'preact-iso';
 import { useAuth } from '../contexts/AuthContext';
 
 const Navigation: FunctionalComponent = () => {
   const { currentUser } = useAuth();
+  const { url } = useLocation();
+
+  // Helper function to check if a path is active
+  const isActive = (path: string): boolean => {
+    return url === path;
+  };
 
   return (
     <nav>
       <div class="nav-container">
         <div class="nav-logo">
-          <Link href="/">popapp.com</Link>
+          <a href="/">popapp.com</a>
         </div>
         <div class="nav-links">
-          <Link activeClassName="active" href="/">Home</Link>
+          <a href="/" class={isActive('/') ? 'active' : ''}>Home</a>
           {currentUser ? (
             <>
-              <Link activeClassName="active" href="/profile">Profile</Link>
-              <Link activeClassName="active" href="/dashboard">Dashboard</Link>
+              <a href="/profile" class={isActive('/profile') ? 'active' : ''}>Profile</a>
+              <a href="/dashboard" class={isActive('/dashboard') ? 'active' : ''}>Dashboard</a>
             </>
           ) : (
-            <Link activeClassName="active" href="/login">Login</Link>
+            <a href="/login" class={isActive('/login') ? 'active' : ''}>Login</a>
           )}
         </div>
       </div>
