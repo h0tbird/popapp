@@ -15,7 +15,10 @@ const Navigation: FunctionalComponent = () => {
     <nav>
       <div class="nav-container">
         <div class="nav-logo">
-          <a href="/">popapp.com</a>
+          <a href="/">
+            <img src="/imgs/popapp.png" alt="popapp.com logo" class="nav-logo-img" />
+            <span>popapp.com</span>
+          </a>
         </div>
         <div class="nav-links">
           <a href="/" class={isActive('/') ? 'active' : ''}>Home</a>
