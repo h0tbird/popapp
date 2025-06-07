@@ -30,6 +30,27 @@ html, body {
 	overflow-x: hidden;
 }
 
+/* App Layout Structure */
+.app-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	width: 100%;
+}
+
+.content-wrapper {
+	display: flex;
+	flex: 1;
+	min-height: calc(100vh - 57px); /* Subtract the height of the top nav */
+}
+
+.main-content {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	overflow-x: hidden;
+}
+
 header {
 	display: flex;
 	justify-content: center;
@@ -54,6 +75,8 @@ header {
 nav {
 	background-color: #673ab8;
 	padding: 0.5rem 1rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	z-index: 10; /* Ensure it's above other elements */
 }
 
 .nav-container {
@@ -63,6 +86,65 @@ nav {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 0 1rem;
+}
+
+/* Sidebar styles */
+.sidebar {
+	background-color: #673ab8;
+	width: 250px;
+	min-width: 250px;
+	color: white;
+	transition: width 0.3s ease;
+	overflow-y: auto;
+	box-sizing: border-box;
+	border-right: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+	margin-top: -1px; /* Creates seamless integration with top nav */
+}
+
+.sidebar-content {
+	padding: 1rem;
+}
+
+.sidebar h3 {
+	font-size: 1rem;
+	margin: 1.5rem 0 0.5rem;
+	padding-bottom: 0.5rem;
+	color: rgba(255, 255, 255, 0.8);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.sidebar-nav li {
+	margin-bottom: 0.25rem;
+}
+
+.sidebar-nav a {
+	display: block;
+	color: white;
+	text-decoration: none;
+	padding: 0.5rem 0.75rem;
+	border-radius: 4px;
+	transition: background-color 0.2s;
+}
+
+.sidebar-nav a:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-nav a.active {
+	background-color: rgba(255, 255, 255, 0.2);
+	font-weight: 500;
+}
+
+.sidebar-nav a.disabled {
+	color: rgba(255, 255, 255, 0.5);
+	pointer-events: none;
 }
 
 .nav-logo a {
@@ -99,7 +181,7 @@ main {
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	max-width: 1280px;
+	max-width: 100%;
 	margin: 0 auto;
 	padding: 1rem;
 	box-sizing: border-box;
@@ -115,9 +197,25 @@ main {
 	overflow-x: hidden;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 768px) {
 	main {
 		padding: 1rem;
+	}
+	
+	.sidebar {
+		width: 200px;
+		min-width: 200px;
+	}
+}
+
+@media (max-width: 639px) {
+	.content-wrapper {
+		flex-direction: column;
+	}
+	
+	.sidebar {
+		width: 100%;
+		min-width: auto;
 	}
 }
 

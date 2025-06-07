@@ -70,7 +70,14 @@ This document defines the key structural elements and components used in the pop
 - **CSS Classes**: No specific class, corresponds to the `<main>` element
 - **HTML Element**: `<main>` in `index.tsx`
 
-### 11. Footer (Future Addition)
+### 11. Sidebar Navigation
+- **Definition**: A vertical navigation panel that appears on the left side of the screen
+- **Location**: Left side of the page, directly below the Navigation Bar
+- **Contents**: Secondary navigation links, settings options, and help resources
+- **CSS Classes**: `sidebar`, `sidebar-content`, `sidebar-nav`
+- **Component File**: `/src/components/Sidebar.tsx`
+
+### 12. Footer (Future Addition)
 - **Definition**: The bottom section of the website (currently not implemented)
 - **Location**: Bottom of every page, below all content
 - **Proposed CSS Classes**: `footer`

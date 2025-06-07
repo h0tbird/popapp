@@ -2,6 +2,7 @@ import { LocationProvider, Router, Route, hydrate, prerender as ssr } from 'prea
 
 import { Header } from './components/Header.jsx';
 import Navigation from './components/Navigation';
+import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import { NotFound } from './pages/_404.jsx';
 import LoginPage from './pages/LoginPage';
@@ -15,17 +16,24 @@ export function App() {
 	return (
 		<AuthProvider>
 			<LocationProvider>
-				<Navigation />
-				<Header />
-				<main>
-					<Router>
-						<Route path="/" component={Home} />
-						<Route path="/login" component={LoginPage} />
-						<ProtectedRoute path="/profile" component={ProfilePage} />
-						<ProtectedRoute path="/dashboard" component={Dashboard} />
-						<Route default component={NotFound} />
-					</Router>
-				</main>
+				<div class="app-container">
+					<Navigation />
+					<div class="content-wrapper">
+						<Sidebar />
+						<div class="main-content">
+							<Header />
+							<main>
+								<Router>
+									<Route path="/" component={Home} />
+									<Route path="/login" component={LoginPage} />
+									<ProtectedRoute path="/profile" component={ProfilePage} />
+									<ProtectedRoute path="/dashboard" component={Dashboard} />
+									<Route default component={NotFound} />
+								</Router>
+							</main>
+						</div>
+					</div>
+				</div>
 			</LocationProvider>
 		</AuthProvider>
 	);
