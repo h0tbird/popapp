@@ -1,7 +1,7 @@
 import { createContext } from 'preact';
 import { useContext, useEffect, useState } from 'preact/hooks';
 import { User, onAuthStateChanged } from 'firebase/auth';
-import { auth } from './firebase';
+import { auth } from '../firebase';
 
 interface AuthContextType {
   currentUser: User | null;
