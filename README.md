@@ -37,6 +37,8 @@ $ npm init preact frontend
 ├───────────────────╯
 │
 └  You're all set!
+$ cd frontend
+$ npm install firebase
 ```
 
 ## Backend
