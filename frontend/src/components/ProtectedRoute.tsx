@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'preact';
-import { Route, RouteProps } from 'preact-router';
+import { Route } from 'preact-iso';
 import { useAuth } from '../contexts/AuthContext';
 
-interface ProtectedRouteProps extends RouteProps {
+interface ProtectedRouteProps {
   component: any;
   path: string;
 }
