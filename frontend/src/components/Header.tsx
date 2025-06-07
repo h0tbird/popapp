@@ -1,31 +1,20 @@
 import { useLocation } from 'preact-iso';
-import { useAuth } from '../contexts/AuthContext';
 
 export function Header() {
 	const { url } = useLocation();
-	const { currentUser } = useAuth();
+	
+	// Get the current page name from the URL
+	const getPageTitle = () => {
+		if (url === '/') return 'Home';
+		// Remove the leading slash and capitalize first letter
+		return url.substring(1).charAt(0).toUpperCase() + url.substring(2);
+	};
 
 	return (
 		<header>
-			<nav>
-				<a href="/" class={url == '/' && 'active'}>
-					Home
-				</a>
-				{currentUser ? (
-					<>
-						<a href="/dashboard" class={url == '/dashboard' && 'active'}>
-							Dashboard
-						</a>
-						<a href="/profile" class={url == '/profile' && 'active'}>
-							Profile
-						</a>
-					</>
-				) : (
-					<a href="/login" class={url == '/login' && 'active'}>
-						Login
-					</a>
-				)}
-			</nav>
+			<div class="page-header">
+				<h1>{getPageTitle()}</h1>
+			</div>
 		</header>
 	);
 }
