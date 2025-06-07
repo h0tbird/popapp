@@ -2,8 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getAnalytics } from 'firebase/analytics';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase configuration using environment variables
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -14,10 +13,56 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
+// Validate required environment variables
+const validateEnvVariables = () => {
+  const requiredVars = [
+    'VITE_FIREBASE_API_KEY', 
+    'VITE_FIREBASE_AUTH_DOMAIN',
+    'VITE_FIREBASE_PROJECT_ID',
+    'VITE_FIREBASE_STORAGE_BUCKET'
+  ];
+  
+  const missingVars = requiredVars.filter(
+    varName => !import.meta.env[varName]
+  );
+  
+  if (missingVars.length > 0) {
+    console.error(`Missing required environment variables: ${missingVars.join(', ')}`);
+    return false;
+  }
+  return true;
+};
+
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const analytics = getAnalytics(app);
-const googleProvider = new GoogleAuthProvider();
+let app;
+let auth;
+let analytics = null;
+let googleProvider;
+
+if (validateEnvVariables()) {
+  try {
+    app = initializeApp(firebaseConfig);
+    auth = getAuth(app);
+    console.log('Firebase Auth initialized successfully');
+    
+    try {
+      analytics = getAnalytics(app);
+      console.log('Firebase Analytics initialized successfully');
+    } catch (error) {
+      console.error('Analytics initialization failed:', error);
+    }
+    
+    googleProvider = new GoogleAuthProvider();
+    // Add custom parameters for Google Sign-In (optional)
+    googleProvider.setCustomParameters({
+      prompt: 'select_account'
+    });
+    
+  } catch (error) {
+    console.error('Firebase initialization error:', error);
+  }
+} else {
+  console.error('Firebase initialization skipped due to missing environment variables');
+}
 
 export { auth, googleProvider, analytics };

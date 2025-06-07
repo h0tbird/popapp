@@ -7,6 +7,7 @@ import { NotFound } from './pages/_404.jsx';
 import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
 import Dashboard from './pages/Dashboard';
+import ProtectedRoute from './components/ProtectedRoute';
 import './style.css';
 import { AuthProvider } from './contexts/AuthContext';
 
@@ -20,8 +21,8 @@ export function App() {
 					<Router>
 						<Route path="/" component={Home} />
 						<Route path="/login" component={LoginPage} />
-						<Route path="/profile" component={ProfilePage} />
-						<Route path="/dashboard" component={Dashboard} />
+						<ProtectedRoute path="/profile" component={ProfilePage} />
+						<ProtectedRoute path="/dashboard" component={Dashboard} />
 						<Route default component={NotFound} />
 					</Router>
 				</main>

@@ -12,13 +12,23 @@ const Login: FunctionComponent = () => {
     try {
       setError('');
       setLoading(true);
+      console.log('Attempting Google sign-in...');
       const result = await signInWithGoogle();
+      console.log('Sign-in result:', result);
+      
       if (!result.success) {
+        console.error('Sign-in failed:', result.error);
         setError(result.error || 'Failed to sign in with Google');
+      } else {
+        console.log('Sign-in successful:', result.user);
+        // Redirect to dashboard after successful login
+        if (typeof window !== 'undefined') {
+          window.location.href = '/dashboard';
+        }
       }
     } catch (error) {
+      console.error('Sign-in error:', error);
       setError('Failed to sign in with Google');
-      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -27,7 +37,8 @@ const Login: FunctionComponent = () => {
   return (
     <div class="login-container">
       <h2>Welcome to PopApp</h2>
-      {error && <div class="error">{error}</div>}
+      <p>Please sign in to continue to your account</p>
+      {error && <div class="error-message">{error}</div>}
       {currentUser ? (
         <p>You are already signed in as {currentUser.displayName || currentUser.email}</p>
       ) : (
